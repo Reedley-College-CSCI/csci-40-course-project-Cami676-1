@@ -44,5 +44,13 @@ int main() {
     cout << "Welcome to the Gym Progress Tracker\n";
     cout << count << " workout(s) loaded from file.\n";
 
+    int loadFromFile(Workout list[]); {
+    ifstream inFile(FILE_NAME);
+    int count = 0;
+
+    if (!inFile) {
+        return 0;
+    }
+
     return 0;
 }
