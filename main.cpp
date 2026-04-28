@@ -52,5 +52,40 @@ int main() {
         return 0;
     }
 
+    int loadFromFile(Workout list[]) {
+    ifstream inFile(FILE_NAME);
+    int count = 0;
+
+    if (!inFile) {
+        return 0;
+    }
+
+    while (count < MAX_WORKOUTS &&
+           getline(inFile, list[count].exercise) &&
+           getline(inFile, list[count].date) &&
+           inFile >> list[count].sets >> list[count].reps >> list[count].weight) {
+        inFile.ignore();
+        getline(inFile, list[count].muscleGroup);
+        count++;
+    }
+
+    inFile.close();
+    return count;
+}
+
+void saveToFile(Workout list[], int count) {
+    ofstream outFile(FILE_NAME);
+
+    for (int i = 0; i < count; i++) {
+        outFile << list[i].exercise << "\n";
+        outFile << list[i].date << "\n";
+        outFile << list[i].sets << " " << list[i].reps << " " << list[i].weight << "\n";
+        outFile << list[i].muscleGroup << "\n";
+    }
+
+    outFile.close();
+}
+
     return 0;
 }
+
