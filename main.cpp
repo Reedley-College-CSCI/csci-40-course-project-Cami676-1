@@ -15,8 +15,10 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+using namespace std;
 
 const int MAX_WORKOUTS = 100;
+const string FILE_NAME = "workouts.txt";
 
 struct Workout {
     string exercise;
@@ -29,8 +31,18 @@ struct Workout {
 
 // Function prototypes
 void displayMenu();
+int loadFromFile(Workout list[]);
+void saveToFile(Workout list[], int count);
 
 int main() {
+
+    Workout workouts[MAX_WORKOUTS];
+    int count = 0;
+    int choice;
+ 
+    count = loadFromFile(workouts);
+    cout << "Welcome to the Gym Progress Tracker\n";
+    cout << count << " workout(s) loaded from file.\n";
 
     return 0;
 }
