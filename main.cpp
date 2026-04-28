@@ -12,7 +12,25 @@
 */
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+
+const int MAX_WORKOUTS = 100;
+
+struct Workout {
+    string exercise;
+    string date;
+    int sets;
+    int reps;
+    double weight;
+    string muscleGroup;
+};
+
+// Function prototypes
+void displayMenu();
 
 int main() {
+
     return 0;
 }
