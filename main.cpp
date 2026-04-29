@@ -34,7 +34,7 @@ void displayMenu();
 int loadFromFile(Workout list[]);
 void saveToFile(Workout list[], int count);
 
-int main() {
+int main(){
 
     Workout workouts[MAX_WORKOUTS];
     int count = 0;
