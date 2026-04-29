@@ -1,8 +1,8 @@
 // CSCI-40 Final Project
 // Author: Abhineet SIngh
 
-/* 
- * Description: 
+/*
+ * Description:
  *A C++ program that lets users log and manage their gym workouts.
  * Each workout entry stores the exercise name, date, sets, reps,
  * weight lifted, and muscle group, grouped together using a struct.
@@ -29,7 +29,6 @@ struct Workout {
     string muscleGroup;
 };
 
-// Function prototypes
 void displayMenu();
 int loadFromFile(Workout list[]);
 void saveToFile(Workout list[], int count);
@@ -39,20 +38,15 @@ int main(){
     Workout workouts[MAX_WORKOUTS];
     int count = 0;
     int choice;
- 
+
     count = loadFromFile(workouts);
     cout << "Welcome to the Gym Progress Tracker\n";
     cout << count << " workout(s) loaded from file.\n";
 
-    int loadFromFile(Workout list[]); {
-    ifstream inFile(FILE_NAME);
-    int count = 0;
+    return 0;
+}
 
-    if (!inFile) {
-        return 0;
-    }
-
-    int loadFromFile(Workout list[]) {
+int loadFromFile(Workout list[]) {
     ifstream inFile(FILE_NAME);
     int count = 0;
 
@@ -85,7 +79,3 @@ void saveToFile(Workout list[], int count) {
 
     outFile.close();
 }
-
-    return 0;
-}
-
