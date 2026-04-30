@@ -28,10 +28,11 @@ struct Workout {
     double weight;
     string muscleGroup;
 };
-
+//function prototypes
 void displayMenu();
 int loadFromFile(Workout list[]);
 void saveToFile(Workout list[], int count);
+void addWorkout(Workout list[], int &count);
 
 int main(){
 
@@ -58,8 +59,7 @@ int loadFromFile(Workout list[]) {
            getline(inFile, list[count].exercise) &&
            getline(inFile, list[count].date) &&
            inFile >> list[count].sets >> list[count].reps >> list[count].weight) {
-        inFile.ignore();
-        getline(inFile, list[count].muscleGroup);
+       
         count++;
     }
 
@@ -78,4 +78,12 @@ void saveToFile(Workout list[], int count) {
     }
 
     outFile.close();
+}
+
+void addWorkout(Workout list[], int &count) {
+    if (count >= MAX_WORKOUTS) {
+        cout << "Workout list is full.\n";
+        return;
+    }
+
 }
