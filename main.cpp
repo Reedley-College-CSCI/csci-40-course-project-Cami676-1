@@ -85,5 +85,30 @@ void addWorkout(Workout list[], int &count) {
         cout << "Workout list is full.\n";
         return;
     }
+Workout w;
+    cout << "Enter exercise name: ";
+    getline(cin, w.exercise);
 
+    cout << "Enter date (MM-DD-YYYY): ";
+    getline(cin, w.date);
+
+    cout << "Enter number of sets: ";
+    cin >> w.sets;
+    while (w.sets <= 0) {
+        cout << "Sets must be positive. Try again: ";
+        cin >> w.sets;
+    }
+    cout << "Enter number of reps: ";
+    cin >> w.reps;
+    while (w.reps <= 0) {
+        cout << "Reps must be positive. Try again: ";
+        cin >> w.reps;
+    }
+
+    cout << "Enter weight (lbs): ";
+    cin >> w.weight;
+    while (w.weight < 0) {
+        cout << "Weight cannot be negative. Try again: ";
+        cin >> w.weight;
+    }
 }
