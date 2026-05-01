@@ -33,6 +33,7 @@ void displayMenu();
 int loadFromFile(Workout list[]);
 void saveToFile(Workout list[], int count);
 void addWorkout(Workout list[], int &count);
+void displayAll(Workout list[], int count);
 
 int main(){
 
@@ -110,5 +111,29 @@ Workout w;
     while (w.weight < 0) {
         cout << "Weight cannot be negative. Try again: ";
         cin >> w.weight;
+    }
+}
+void displayAll(Workout list[], int count) {
+    if (count == 0) {
+        cout << "No workouts to display.\n";
+        return;
+    }
+
+    cout << "\n";
+    cout << left;
+    cout << setw(20) << "Exercise";
+    cout << setw(14) << "Date";
+    cout << setw(6) << "Sets";
+    cout << setw(6) << "Reps";
+    cout << setw(10) << "Weight";
+    cout << "Muscle Group\n";
+    cout << "----------------------------------------------------------------------\n";
+    for (int i = 0; i < count; i++) {
+        cout << setw(20) << list[i].exercise;
+        cout << setw(14) << list[i].date;
+        cout << setw(6) << list[i].sets;
+        cout << setw(6) << list[i].reps;
+        cout << setw(10) << list[i].weight;
+        cout << list[i].muscleGroup << "\n";
     }
 }
