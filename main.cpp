@@ -137,3 +137,10 @@ void displayAll(Workout list[], int count) {
         cout << list[i].muscleGroup << "\n";
     }
 }
+void displayMenu() {
+    cout << "\n--- Menu ---\n";
+    cout << "1. Add a new workout\n";
+    cout << "2. Display all workouts\n";
+    cout << "3. Save and Exit\n";
+    cout << "Enter your choice: ";
+}
