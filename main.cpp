@@ -34,22 +34,21 @@ int loadFromFile(Workout list[]);
 void saveToFile(Workout list[], int count);
 void addWorkout(Workout list[], int &count);
 void displayAll(Workout list[], int count);
+void removeWorkout(Workout list[], int &count);
 
 int main(){
 
     Workout workouts[MAX_WORKOUTS];
     int count = 0;
     int choice;
-
-    count = loadFromFile(workouts);
+     count = loadFromFile(workouts);
     cout << "Welcome to the Gym Progress Tracker\n";
     cout << count << " workout(s) loaded from file.\n";
     do {
         displayMenu();
         cin >> choice;
         cin.ignore();
-
-        switch (choice) {
+    switch (choice) {
             case 1:
                 addWorkout(workouts, count);
                 break;
@@ -57,13 +56,16 @@ int main(){
                 displayAll(workouts, count);
                 break;
             case 3:
+                removeWorkout(workouts, count);
+                break;
+            case 4:
                 saveToFile(workouts, count);
                 cout << "Workouts saved. Goodbye!\n";
                 break;
             default:
                 cout << "Invalid choice. Try again.\n";
         }
-    } while (choice != 3);
+    } while (choice != 4);
 
     return 0;
 }
@@ -162,6 +164,27 @@ void displayMenu() {
     cout << "\n--- Menu ---\n";
     cout << "1. Add a new workout\n";
     cout << "2. Display all workouts\n";
-    cout << "3. Save and Exit\n";
+    cout << "3. Remove a workout\n";
+    cout << "4. Save and Exit\n";
     cout << "Enter your choice: ";
+}
+void removeWorkout(Workout list[], int &count) {
+    if (count == 0) {
+        cout << "No workouts to remove.\n";
+        return;
+    }
+displayAll(list, count);
+    int index;
+    cout << "Enter the entry number to remove (1 to " << count << "): ";
+    cin >> index;
+    cin.ignore();
+    if (index < 1 || index > count) {
+        cout << "Invalid entry number.\n";
+        return;
+    }
+    for (int i = index - 1; i < count - 1; i++) {
+        list[i] = list[i + 1];
+    }
+    count--;
+cout << "Workout removed.\n";
 }
