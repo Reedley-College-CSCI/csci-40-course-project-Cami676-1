@@ -44,6 +44,26 @@ int main(){
     count = loadFromFile(workouts);
     cout << "Welcome to the Gym Progress Tracker\n";
     cout << count << " workout(s) loaded from file.\n";
+    do {
+        displayMenu();
+        cin >> choice;
+        cin.ignore();
+
+        switch (choice) {
+            case 1:
+                addWorkout(workouts, count);
+                break;
+            case 2:
+                displayAll(workouts, count);
+                break;
+            case 3:
+                saveToFile(workouts, count);
+                cout << "Workouts saved. Goodbye!\n";
+                break;
+            default:
+                cout << "Invalid choice. Try again.\n";
+        }
+    } while (choice != 3);
 
     return 0;
 }
