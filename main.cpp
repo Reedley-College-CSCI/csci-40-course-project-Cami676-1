@@ -80,7 +80,8 @@ int loadFromFile(Workout list[]) {
            getline(inFile, list[count].exercise) &&
            getline(inFile, list[count].date) &&
            inFile >> list[count].sets >> list[count].reps >> list[count].weight) {
-       
+       inFile.ignore();
+        getline(inFile, list[count].muscleGroup);
         count++;
     }
 
