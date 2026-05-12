@@ -17,11 +17,22 @@ Key features:
 ---
 
 ## 2. Design Decisions
-- What fundamental programming constructs and data types did you use, and why?  
-- Why did you choose to structure your data using structs?  
-- How did you implement searching and sorting? What algorithms did you use and why?  
-- How do you ensure data persistence between program runs?  
-- Did you consider alternative approaches? If so, why did you not use them?  
+- What fundamental programming constructs and data types did you use, and why? 
+The program uses fundamental constructs for ex. arrays, structs, loops, conditionals, switch-case statements, file I/O with fstrim, and modular functions. Strings are used for text fields, integers for sets and reps, and a double for weight.
+
+- Why did you choose to structure your data using structs? 
+Each workout has six related pieces of data that describe one thing. Grouping them in a struct keeps the code organized and lets one Workout variable be passed around instead of six separate varables. The array of struts makes it easy to manage multiple workouts.
+
+- How did you implement searching and sorting? What algorithms did you use and why? 
+Linear search is used because the array is not guaranteed to be sorted, and linear search works on unordered data. The search uses `string::find` to support substring matching so partial keywords like "Bench" still match "Bench Press." Selection sort is used for sorting because it is simple to implement and efficient enough for a small array of up to 100 entries.
+
+
+- How do you ensure data persistence between program runs? 
+Workouts are stored in a text file (`workouts.txt`). On program startup, `loadFromFile` reads the file into the array. On exit, `saveToFile` writes the array back to the file. This way data is never lost between sessions.
+
+- Did you consider alternative approaches? If so, why did you not use them? 
+A vector could have replaced the fixed array, but the project requirements specify no STL containers. A binary search would be faster than linear search but requires sorted data, and since the user can sort by either date or weight, the array isn't always in the right order for the search field.
+
 
 ---
 
