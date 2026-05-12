@@ -4,6 +4,15 @@
 ## 1. Overview
 - What problem does your project solve?  
 - Briefly describe the purpose and key features of your program.  
+This project is a Gym Progress Tracker built in C++ that lets users log and manage their workouts through a menu-based console program. The problem it solves is keeping an organized record of training sessions without needing a spreadsheet or a third-party app.
+
+Key features:
+- Add new workout entries with exercise name, date, sets, reps, weight, and muscle group
+- Display all logged workouts in a formatted table
+- Remove an entry by selecting its number
+- Search workouts by exercise name or muscle group
+- Sort workouts by date or weight
+- Save data to a text file so workouts persist between program runs
 
 ---
 
