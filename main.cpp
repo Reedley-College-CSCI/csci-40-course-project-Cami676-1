@@ -35,6 +35,7 @@ void saveToFile(Workout list[], int count);
 void addWorkout(Workout list[], int &count);
 void displayAll(Workout list[], int count);
 void removeWorkout(Workout list[], int &count);
+void searchWorkout(Workout list[], int count);
 
 int main(){
 
@@ -59,13 +60,16 @@ int main(){
                 removeWorkout(workouts, count);
                 break;
             case 4:
+                searchWorkout(workouts, count);
+                break;
+            case 5:
                 saveToFile(workouts, count);
                 cout << "Workouts saved. Goodbye!\n";
                 break;
             default:
                 cout << "Invalid choice. Try again.\n";
         }
-    } while (choice != 4);
+    } while (choice != 5);
 
     return 0;
 }
@@ -150,8 +154,8 @@ void displayAll(Workout list[], int count) {
     cout << setw(6) << "Reps";
     cout << setw(10) << "Weight";
     cout << "Muscle Group\n";
-    cout << "----------------------------------------------------------------------\n";
-    for (int i = 0; i < count; i++) {
+cout << string(70, '-') << "\n";    
+for (int i = 0; i < count; i++) {
         cout << setw(20) << list[i].exercise;
         cout << setw(14) << list[i].date;
         cout << setw(6) << list[i].sets;
@@ -165,7 +169,8 @@ void displayMenu() {
     cout << "1. Add a new workout\n";
     cout << "2. Display all workouts\n";
     cout << "3. Remove a workout\n";
-    cout << "4. Save and Exit\n";
+    cout << "4. Search workouts\n";
+    cout << "5. Save and Exit\n";
     cout << "Enter your choice: ";
 }
 void removeWorkout(Workout list[], int &count) {
@@ -187,4 +192,47 @@ displayAll(list, count);
     }
     count--;
 cout << "Workout removed.\n";
+}
+void searchWorkout(Workout list[], int count) {
+    if (count == 0) {
+        cout << "No workouts to search.\n";
+        return;
+    }
+
+    int searchChoice;
+    cout << "Search by:\n";
+    cout << "1. Exercise name\n";
+    cout << "2. Muscle group\n";
+    cout << "Enter your choice: ";
+    cin >> searchChoice;
+    cin.ignore();
+
+    string keyword;
+    cout << "Enter search keyword: ";
+    getline(cin, keyword);
+
+    int found = 0;
+    for (int i = 0; i < count; i++) {
+        bool match = false;
+        if (searchChoice == 1 && list[i].exercise.find(keyword) != string::npos) {
+            match = true;
+        }
+        else if (searchChoice == 2 && list[i].muscleGroup.find(keyword) != string::npos) {
+            match = true;
+        }
+
+        if (match) {
+            cout << "Match: " << list[i].exercise << " | " << list[i].date
+                 << " | " << list[i].sets << " sets x " << list[i].reps
+                 << " reps @ " << list[i].weight << " lbs | "
+                 << list[i].muscleGroup << "\n";
+            found++;
+        }
+    }
+
+    if (found == 0) {
+        cout << "No matches found.\n";
+    } else {
+        cout << found << " match(es) found.\n";
+    }
 }
