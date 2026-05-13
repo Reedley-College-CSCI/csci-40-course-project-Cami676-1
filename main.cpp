@@ -64,6 +64,9 @@ int main(){
                 searchWorkout(workouts, count);
                 break;
             case 5:
+                sortWorkout(workouts, count);
+                break;
+            case 6:
                 saveToFile(workouts, count);
                 cout << "Workouts saved. Goodbye!\n";
                 break;
