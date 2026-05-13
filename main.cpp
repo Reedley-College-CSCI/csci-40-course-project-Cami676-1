@@ -36,6 +36,7 @@ void addWorkout(Workout list[], int &count);
 void displayAll(Workout list[], int count);
 void removeWorkout(Workout list[], int &count);
 void searchWorkout(Workout list[], int count);
+void sortWorkout(Workout list[], int count);
 
 int main(){
 
@@ -170,7 +171,8 @@ void displayMenu() {
     cout << "2. Display all workouts\n";
     cout << "3. Remove a workout\n";
     cout << "4. Search workouts\n";
-    cout << "5. Save and Exit\n";
+    cout << "5. Sort workouts\n";
+    cout << "6. Save and Exit\n";
     cout << "Enter your choice: ";
 }
 void removeWorkout(Workout list[], int &count) {
@@ -235,4 +237,44 @@ void searchWorkout(Workout list[], int count) {
     } else {
         cout << found << " match(es) found.\n";
     }
+}
+void sortWorkout(Workout list[], int count) {
+    if (count == 0) {
+        cout << "No workouts to sort.\n";
+        return;
+    }
+
+    int sortChoice;
+    cout << "Sort by:\n";
+    cout << "1. Date\n";
+    cout << "2. Weight\n";
+    cout << "Enter your choice: ";
+    cin >> sortChoice;
+    cin.ignore();
+
+    if (sortChoice != 1 && sortChoice != 2) {
+        cout << "Invalid choice.\n";
+        return;
+    }
+
+    for (int i = 0; i < count - 1; i++) {
+        int smallest = i;
+        for (int j = i + 1; j < count; j++) {
+            if (sortChoice == 1 && list[j].date < list[smallest].date) {
+                smallest = j;
+            }
+            else if (sortChoice == 2 && list[j].weight < list[smallest].weight) {
+                smallest = j;
+            }
+        }
+
+        if (smallest != i) {
+            Workout temp = list[i];
+            list[i] = list[smallest];
+            list[smallest] = temp;
+        }
+    }
+
+    cout << "Workouts sorted.\n";
+    displayAll(list, count);
 }
