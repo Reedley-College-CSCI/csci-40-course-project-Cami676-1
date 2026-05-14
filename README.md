@@ -79,7 +79,7 @@ Each function handles one part of the program:
 
 The program also handles input failure across every numeric prompt. If a user types a letter where a number is expected, the program detects the cin failure, clears the error state, flushes the buffer, prints an error message, and continues without crashing or looping forever.
 
-**Video Demonstration:** [-]
+**Video Demonstration:** [https://youtu.be/6Y8Rxf3GTus?si=7dx8kTLCpUs5MiBC]
 
 ---
 

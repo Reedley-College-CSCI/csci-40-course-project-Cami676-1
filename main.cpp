@@ -1,5 +1,5 @@
 // CSCI-40 Final Project
-// Author: Abhineet SIngh
+// Author: Abhineet Singh
 
 /*
  * Description:
