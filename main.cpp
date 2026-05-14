@@ -129,7 +129,52 @@ Workout w;
 
     cout << "Enter date (MM-DD-YYYY): ";
     getline(cin, w.date);
+    while (true) {
+        bool valid = true;
 
+        if (w.date.length() != 10) {
+            valid = false;
+        }
+
+        if (valid && (w.date[2] != '-' || w.date[5] != '-')) {
+            valid = false;
+        }
+
+        if (valid) {
+            for (int i = 0; i < 10; i++) {
+                if (i == 2 || i == 5) {
+                    continue;
+                }
+                if (!isdigit(w.date[i])) {
+                    valid = false;
+                }
+            }
+        }
+
+        if (valid) {
+            int month = stoi(w.date.substr(0, 2));
+            int day = stoi(w.date.substr(3, 2));
+            int year = stoi(w.date.substr(6, 4));
+
+            if (month < 1 || month > 12) {
+                valid = false;
+            }
+            if (day < 1 || day > 31) {
+                valid = false;
+            }
+            if (year < 1900 || year > 2100) {
+                valid = false;
+            }
+        }
+
+        if (valid) {
+            break;
+        }
+
+        cout << "Invalid date format. Please use MM-DD-YYYY.\n";
+        cout << "Enter date (MM-DD-YYYY): ";
+        getline(cin, w.date);
+    }
     cout << "Enter number of sets: ";
     cin >> w.sets;
     while (cin.fail() || w.sets <= 0) {
