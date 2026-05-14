@@ -261,7 +261,7 @@ void sortWorkout(Workout list[], int count) {
     cout << "2. Weight\n";
     cout << "Enter your choice: ";
     cin >> sortChoice;
-    cin.ignore();
+    cin.ignore(10000, '\n');
 
     if (sortChoice != 1 && sortChoice != 2) {
         cout << "Invalid choice.\n";
