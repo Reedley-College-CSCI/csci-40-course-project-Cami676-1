@@ -132,21 +132,39 @@ Workout w;
 
     cout << "Enter number of sets: ";
     cin >> w.sets;
-    while (w.sets <= 0) {
-        cout << "Sets must be positive. Try again: ";
+    while (cin.fail() || w.sets <= 0) {
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input. Please enter a number.\n";
+        } else {
+            cout << "Sets must be positive. Try again: ";
+        }
         cin >> w.sets;
     }
     cout << "Enter number of reps: ";
     cin >> w.reps;
-    while (w.reps <= 0) {
-        cout << "Reps must be positive. Try again: ";
+    while (cin.fail() || w.reps <= 0) {
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input. Please enter a number.\n";
+        } else {
+            cout << "Reps must be positive. Try again: ";
+        }
         cin >> w.reps;
     }
 
     cout << "Enter weight (lbs): ";
     cin >> w.weight;
-    while (w.weight < 0) {
-        cout << "Weight cannot be negative. Try again: ";
+    while (cin.fail() || w.weight < 0) {
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input. Please enter a number.\n";
+        } else {
+            cout << "Weight cannot be negative. Try again: ";
+        }
         cin >> w.weight;
     }
     cin.ignore(10000, '\n');
@@ -201,6 +219,12 @@ displayAll(list, count);
     int index;
     cout << "Enter the entry number to remove (1 to " << count << "): ";
     cin >> index;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid input. Please enter a number.\n";
+        return;
+    }
     cin.ignore(10000, '\n');
     if (index < 1 || index > count) {
         cout << "Invalid entry number.\n";
@@ -224,6 +248,12 @@ void searchWorkout(Workout list[], int count) {
     cout << "2. Muscle group\n";
     cout << "Enter your choice: ";
     cin >> searchChoice;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid input. Please enter a number.\n";
+        return;
+    }
     cin.ignore(10000, '\n');
 
     string keyword;
@@ -267,6 +297,12 @@ void sortWorkout(Workout list[], int count) {
     cout << "2. Weight\n";
     cout << "Enter your choice: ";
     cin >> sortChoice;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid input. Please enter a number.\n";
+        return;
+    }
     cin.ignore(10000, '\n');
 
     if (sortChoice != 1 && sortChoice != 2) {
