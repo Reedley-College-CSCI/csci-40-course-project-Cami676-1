@@ -323,7 +323,6 @@ void searchWorkout(Workout list[], int count) {
             found++;
         }
     }
-
     if (found == 0) {
         cout << "No matches found.\n";
     } else {
