@@ -224,7 +224,7 @@ void searchWorkout(Workout list[], int count) {
     cout << "2. Muscle group\n";
     cout << "Enter your choice: ";
     cin >> searchChoice;
-    cin.ignore();
+    cin.ignore(10000, '\n');
 
     string keyword;
     cout << "Enter search keyword: ";
