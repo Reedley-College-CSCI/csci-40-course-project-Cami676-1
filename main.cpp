@@ -73,7 +73,7 @@ int main(){
             default:
                 cout << "Invalid choice. Try again.\n";
         }
-    } while (choice != 5);
+    } while (choice != 6);
 
     return 0;
 }
@@ -143,6 +143,14 @@ Workout w;
         cout << "Weight cannot be negative. Try again: ";
         cin >> w.weight;
     }
+    cin.ignore();
+
+    cout << "Enter muscle group: ";
+    getline(cin, w.muscleGroup);
+
+    list[count] = w;
+    count++;
+    cout << "Workout added.\n";
 }
 void displayAll(Workout list[], int count) {
     if (count == 0) {
