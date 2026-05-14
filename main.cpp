@@ -149,7 +149,7 @@ Workout w;
         cout << "Weight cannot be negative. Try again: ";
         cin >> w.weight;
     }
-    cin.ignore();
+    cin.ignore(10000, '\n');
 
     cout << "Enter muscle group: ";
     getline(cin, w.muscleGroup);
@@ -201,7 +201,7 @@ displayAll(list, count);
     int index;
     cout << "Enter the entry number to remove (1 to " << count << "): ";
     cin >> index;
-    cin.ignore();
+    cin.ignore(10000, '\n');
     if (index < 1 || index > count) {
         cout << "Invalid entry number.\n";
         return;
