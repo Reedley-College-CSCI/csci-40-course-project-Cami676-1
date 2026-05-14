@@ -49,7 +49,13 @@ int main(){
     do {
         displayMenu();
         cin >> choice;
-        cin.ignore();
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input. Please enter a number.\n";
+            continue;
+        }
+        cin.ignore(10000, '\n');
     switch (choice) {
             case 1:
                 addWorkout(workouts, count);
